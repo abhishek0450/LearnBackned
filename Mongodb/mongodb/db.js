@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-
+require('dotenv').config();
 // Connection URL
-const useNewUrl = 'mongodb://localhost:27017/test';
+//const useNewUrlLocal = process.env.MONGODB_URL_LOCAL;
+const  useNewUrl = process.env.MONGODB_URL;
 // Connect to the database
 mongoose.connect(useNewUrl, {
     useNewUrlParser: true, 
@@ -13,7 +14,7 @@ const db=mongoose.connection;
 //get the default connection
 //moongoose maintains a default connection object that represents the connection to the database
 db.on('connected',()=>{
-    console.log('Mongoose default connection open to ' + useNewUrl);
+    console.log('Mongoose default connection Connected ');
 });
 
 db.on('error',(err)=>{
